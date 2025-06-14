@@ -72,3 +72,16 @@
     AI/ML: 
       • TensorFlow or PyTorch (for facial recognition & chatbot) 
       • OpenAI GPT (or fine-tuned LLM) for personalized chatbot
+
+
+
+Team 8BITS
+
+
+Team Lead Rishabh.K
+
+          Rishab.C
+          
+          Omkar.P
+          
+          Hrishikash.MD
