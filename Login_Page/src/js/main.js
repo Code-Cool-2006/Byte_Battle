@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById('password').value;
         const role = document.getElementById('role').value;
 
-        const res = await fetch('http://localhost:3001/api/login', {
+        const res = await fetch('http://localhost:5000/api/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password, role })
@@ -39,12 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
         // Debug: log values
         console.log('Login response:', res.ok, 'Role:', role);
 
-        // Redirect only if Super Admin logs in successfully
         if (res.ok && role === 'superAdmin') {
-            window.location.href = '../../dashboard/main.html';
-        }
-        if (res.ok && role === 'student') {
+            console.log('Redirecting to main.html as superAdmin');
+            window.location.href = 'c:\\Users\\user\\Documents\\FrontEnd Development\\Byte_Battle\\dashboard\\main.html';        
+        } else if (res.ok && role === 'student') {
             window.location.href = '../../Student_Side/student-dash.html';
+        } else {
+            console.log('No redirect: res.ok=', res.ok, 'role=', role);
         }
     });
 });

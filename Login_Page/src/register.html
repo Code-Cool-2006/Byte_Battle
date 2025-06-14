@@ -38,6 +38,48 @@
         </form>
         <div id="message"></div>
     </div>
-    <script src="js/register.js"></script>
+    <script>
+    // Handle registration form submission
+    document.getElementById('registerForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const email = document.getElementById('reg-email').value;
+        const name = document.getElementById('reg-name').value;
+        const password = document.getElementById('reg-password').value;
+        const role = document.getElementById('reg-role').value;
+        const messageDiv = document.getElementById('message');
+
+        try {
+            const response = await fetch('http://localhost:5000/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                // credentials: 'include', // Uncomment if your backend uses cookies
+                body: JSON.stringify({ email, name, password, role })
+            });
+
+            // Check if response is JSON before parsing
+            let data = {};
+            const contentType = response.headers.get('content-type');
+            if (contentType && contentType.indexOf('application/json') !== -1) {
+                data = await response.json();
+            }
+
+            if (response.ok) {
+                messageDiv.style.color = 'green';
+                messageDiv.textContent = 'Registration successful! Redirecting to login...';
+                setTimeout(() => {
+                    window.location.href = 'User_login.html';
+                }, 1500);
+            } else {
+                messageDiv.style.color = 'red';
+                messageDiv.textContent = (data && data.message) ? data.message : 'Registration failed.';
+            }
+        } catch (err) {
+            messageDiv.style.color = 'red';
+            messageDiv.textContent = 'Could not connect to server. Please check if backend is running and CORS is enabled.';
+        }
+    });
+    </script>
 </body>
 </html>
