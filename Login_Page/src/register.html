@@ -1,165 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SmartAcad Sign Up</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-      box-sizing: border-box;
-    }
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #a78bfa, #ddd6fe);
-    }
-    .signup-container {
-      background: white;
-      display: flex;
-      max-width: 900px;
-      width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-      overflow: hidden;
-      margin-bottom: 2rem;
-    }
-    .signup-image {
-      flex: 1;
-      background: url('https://img.freepik.com/free-vector/mobile-login-concept-illustration_114360-135.jpg') no-repeat center center/cover;
-    }
-    .signup-form {
-      flex: 1;
-      padding: 3rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .signup-form h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #111827;
-    }
-    .form-group {
-      margin-bottom: 1.2rem;
-    }
-    .form-group label {
-      font-weight: 600;
-      color: #374151;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-    .form-group input,
-    .form-group select {
-      width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #d1d5db;
-      border-radius: 10px;
-      font-size: 1rem;
-    }
-    .form-group input:focus,
-    .form-group select:focus {
-      border-color: #a78bfa;
-      outline: none;
-    }
-    .submit-btn {
-      background-color: #a78bfa;
-      color: white;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 10px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 1rem;
-    }
-    .submit-btn:hover {
-      background-color: #c4b5fd;
-    }
-    .login-text {
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      text-align: center;
-    }
-    .login-text a {
-      color: #7c3aed;
-      text-decoration: none;
-    }
-    .login-text a:hover {
-      text-decoration: underline;
-    }
-    footer {
-      text-align: center;
-      color: #f3e8ff;
-      font-size: 0.85rem;
-    }
-    footer a {
-      color: #e9d5ff;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-    footer a:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
-    @media (max-width: 768px) {
-      .signup-container {
-        flex-direction: column;
-      }
-      .signup-image {
-        height: 200px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="signup-container">
-    <div class="signup-image"></div>
-    <form class="signup-form">
-      <h2>Create your SmartAcad Account</h2>
-
-      <div class="form-group">
-        <label for="fullname">Full Name</label>
-        <input type="text" id="fullname" required placeholder="John Doe" />
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" required placeholder="you@example.com" />
-      </div>
-
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" required placeholder="••••••••" />
-      </div>
-
-      <div class="form-group">
-        <label for="role">Register as</label>
-        <select id="role" required>
-          <option value="" disabled selected>Select role</option>
-          <option value="student">Student</option>
-          <option value="admin">Admin</option>
-          <option value="superAdmin">Super Admin</option>
-        </select>
-      </div>
-
-      <button type="submit" class="submit-btn">Sign Up</button>
-
-      <div class="login-text">
-        Already have an account? <a href="login.html">Log in</a>
-      </div>
-    </form>
-  </div>
-
-  <footer>
-    <a href="SmartAcad_Privacy_Policy_Updated.pdf" download>Privacy Policy</a> |
-    <a href="TERMS AND CONDITIONS.pdf" download>Terms & Conditions</a>
-  </footer>
+    <div class="container">
+        <h1>Register</h1>
+        <form class="form" id="registerForm">
+            <div class="input-span">
+                <label for="reg-email" class="label">Email</label>
+                <input type="email" id="reg-email" name="reg-email" required />
+            </div>
+            <div class="input-span">
+                <label for="reg-name" class="label">Name</label>
+                <input type="text" id="reg-name" name="reg-name" required />
+            </div>
+            <div class="input-span">
+                <label for="reg-password" class="label">Password</label>
+                <input type="password" id="reg-password" name="reg-password" required />
+            </div>
+            <div class="input-span">
+                <label for="reg-role" class="label">Select Role</label>
+                <select id="reg-role" name="reg-role" required>
+                    <option value="" disabled selected>Select role</option>
+                    <option value="student">Student</option>
+                    <option value="admin">Admin</option>
+                    <option value="superAdmin">Super Admin</option>
+                </select>
+            </div>
+            <input class="submit" type="submit" value="Register" />
+            <div class="span">
+                Already have an account? <a href="User_login.html">Login here</a>
+            </div>
+        </form>
+        <div id="message"></div>
+    </div>
+    <script src="js/register.js"></script>
 </body>
 </html>

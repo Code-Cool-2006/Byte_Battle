@@ -20,13 +20,6 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model('User', userSchema);
 
-// Define a schema and model for UINs
-const uinSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  uin: { type: String, required: true },
-});
-const UIN = mongoose.model('UIN', uinSchema);
-
 app.use(cors());
 app.use(express.json());
 
@@ -63,24 +56,11 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-app.post('/api/generate-uin', async (req, res) => {
+app.post('/api/generate-uin', (req, res) => {
   const { email } = req.body;
-  if (!email) return res.status(400).json({ message: 'Email is required.' });
-
-  // Generate a random UIN
+  // Generate a random UIN (for demo)
   const uin = Math.floor(100000 + Math.random() * 900000).toString();
-
-  try {
-    // Save or update the UIN for the email
-    const result = await UIN.findOneAndUpdate(
-      { email },
-      { uin },
-      { upsert: true, new: true, setDefaultsOnInsert: true }
-    );
-    res.json({ uin: result.uin });
-  } catch (err) {
-    res.status(500).json({ message: 'Database error.' });
-  }
+  res.json({ uin });
 });
 
 app.listen(PORT, () => {
