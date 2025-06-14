@@ -1,42 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartAcad Login</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #a78bfa, #ddd6fe);
+    }
+    .login-container {
+      background: white;
+      display: flex;
+      max-width: 900px;
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .login-image {
+      flex: 1;
+      background: url('https://img.freepik.com/free-vector/login-concept-illustration_114360-757.jpg') no-repeat center center/cover;
+    }
+    .login-form {
+      flex: 1;
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .login-form h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #111827;
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      font-weight: 600;
+      color: #374151;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: #a78bfa;
+      outline: none;
+    }
+    .form-group a {
+      font-size: 0.9rem;
+      color: #7c3aed;
+      text-decoration: none;
+    }
+    .form-group a:hover {
+      text-decoration: underline;
+    }
+    .submit-btn {
+      background-color: #a78bfa;
+      color: white;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+    .submit-btn:hover {
+      background-color: #c4b5fd;
+    }
+    .signup-text {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    .signup-text a {
+      color: #7c3aed;
+      text-decoration: none;
+    }
+    .signup-text a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      color: #f3e8ff;
+      font-size: 0.85rem;
+    }
+    footer a {
+      color: #e9d5ff;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .login-container {
+        flex-direction: column;
+      }
+      .login-image {
+        height: 200px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Login</h1>
-        <form class="form">
-            <div class="input-span">
-                <label for="email" class="label">Email</label>
-                <input type="email" name="email" id="email" required />
-            </div>
-            <div class="input-span">
-                <label for="password" class="label">Password</label>
-                <input type="password" name="password" id="password" required />
-            </div>
-            <div class="input-span">
-                <label for="role" class="label">Login as</label>
-                <select name="role" id="role" required>
-                    <option value="" disabled selected>Select role</option>
-                    <option value="student">Student</option>
-                    <option value="teacher">Teacher</option>
-                    <option value="admin">Admin</option>
-                    <option value="superAdmin">Super Admin</option>
-                </select>
-            </div>
-            <div class="span">
-                <a href="#">Forgot password?</a>
-            </div>
-            <input class="submit" type="submit" value="Log in" />
-            <div class="span">
-                Don't have an account? <a href="register.html">Sign up</a>
-            </div>
-        </form>
-    </div>
-    <script src="js/main.js"></script>
+  <div class="login-container">
+    <div class="login-image"></div>
+    <form class="login-form">
+      <h2>Welcome back to SmartAcad</h2>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required placeholder="you@example.com" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required placeholder="••••••••" />
+      </div>
+
+      <div class="form-group">
+        <label for="role">Login as</label>
+        <select id="role" required>
+          <option value="" disabled selected>Select role</option>
+          <option value="student">Student</option>
+          <option value="admin">Admin</option>
+          <option value="superAdmin">Super Admin</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="text-align: right;">
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="submit-btn">Log In</button>
+
+      <div class="signup-text">
+        Don’t have an account? <a href="signup.html">Sign up</a>
+      </div>
+    </form>
+  </div>
+
+  <footer>
+    <a href="SmartAcad_Privacy_Policy_Updated.pdf" download>Privacy Policy</a> |
+    <a href="TERMS AND CONDITIONS.pdf" download>Terms & Conditions</a>
+  </footer>
 </body>
 </html>
