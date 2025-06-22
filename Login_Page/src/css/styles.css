@@ -66,14 +66,14 @@ h1 {
     background-color: var(--bg-light);
     font-size: 1rem;
     transition: border 0.2s;
-    box-sizing: border-box; /* Ensure consistent sizing */
+    box-sizing: border-box;
 }
 
 .form input[type="email"]:focus,
 .form input[type="password"]:focus,
 .form input[type="text"]:focus,
 .form select:focus {
-    border: 2px solid var(--clr);
+    border: 2px solid var(--clr); /* Blue border on focus */
     outline: none;
 }
 

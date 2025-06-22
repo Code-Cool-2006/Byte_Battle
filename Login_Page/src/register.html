@@ -3,83 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register Page</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Register - Byte Battle</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .register-container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+            font-size: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+        }
+        
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .login-link a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        #message {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Register</h1>
-        <form class="form" id="registerForm">
-            <div class="input-span">
-                <label for="reg-email" class="label">Email</label>
-                <input type="email" id="reg-email" name="reg-email" required />
+    <div class="register-container">
+        <h2>Register</h2>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="reg-email">Email</label>
+                <input type="email" id="reg-email" name="email" required>
             </div>
-            <div class="input-span">
-                <label for="reg-name" class="label">Name</label>
-                <input type="text" id="reg-name" name="reg-name" required />
+            
+            <div class="form-group">
+                <label for="reg-name">Full Name</label>
+                <input type="text" id="reg-name" name="fullname" required>
             </div>
-            <div class="input-span">
-                <label for="reg-password" class="label">Password</label>
-                <input type="password" id="reg-password" name="reg-password" required />
+            
+            <div class="form-group">
+                <label for="reg-password">Password</label>
+                <input type="password" id="reg-password" name="password" required>
             </div>
-            <div class="input-span">
-                <label for="reg-role" class="label">Select Role</label>
-                <select id="reg-role" name="reg-role" required>
-                    <option value="" disabled selected>Select role</option>
+            
+            <div class="form-group">
+                <label for="reg-role">Select Role</label>
+                <select id="reg-role" name="role" required>
+                    <option value="">Choose your role</option>
                     <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
                     <option value="admin">Admin</option>
                     <option value="superAdmin">Super Admin</option>
                 </select>
             </div>
-            <input class="submit" type="submit" value="Register" />
-            <div class="span">
-                Already have an account? <a href="User_login.html">Login here</a>
+            
+            <button type="submit">Register</button>
+            
+            <div class="login-link">
+                <p>Already have an account? <a href="User_login.html">Login here</a></p>
             </div>
         </form>
+        
         <div id="message"></div>
     </div>
+
     <script>
-    // Handle registration form submission
-    document.getElementById('registerForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const email = document.getElementById('reg-email').value;
-        const name = document.getElementById('reg-name').value;
-        const password = document.getElementById('reg-password').value;
-        const role = document.getElementById('reg-role').value;
-        const messageDiv = document.getElementById('message');
-
-        try {
-            const response = await fetch('http://localhost:5000/api/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                // credentials: 'include', // Uncomment if your backend uses cookies
-                body: JSON.stringify({ email, name, password, role })
-            });
-
-            // Check if response is JSON before parsing
-            let data = {};
-            const contentType = response.headers.get('content-type');
-            if (contentType && contentType.indexOf('application/json') !== -1) {
-                data = await response.json();
+        // Registration form handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const registerForm = document.getElementById('registerForm');
+            
+            if (registerForm) {
+                registerForm.addEventListener('submit', async function(e) {
+                    e.preventDefault();
+                    
+                    const fullname = document.getElementById('reg-name').value.trim();
+                    const email = document.getElementById('reg-email').value.trim();
+                    const password = document.getElementById('reg-password').value;
+                    const role = document.getElementById('reg-role').value;
+                    
+                    console.log('Form values:', { fullname, email, password, role });
+                    
+                    const messageDiv = document.getElementById('message');
+                    const submitBtn = registerForm.querySelector('button[type="submit"]');
+                    
+                    // Clear previous messages
+                    messageDiv.textContent = '';
+                    messageDiv.className = '';
+                    
+                    // Basic validation
+                    if (!fullname || !email || !password || !role) {
+                        messageDiv.textContent = 'Please fill in all required fields.';
+                        messageDiv.className = 'error';
+                        return;
+                    }
+                    
+                    // Email validation
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        messageDiv.textContent = 'Please enter a valid email address.';
+                        messageDiv.className = 'error';
+                        return;
+                    }
+                    
+                    // Password validation
+                    if (password.length < 6) {
+                        messageDiv.textContent = 'Password must be at least 6 characters long.';
+                        messageDiv.className = 'error';
+                        return;
+                    }
+                    
+                    // Disable submit button
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Registering...';
+                    
+                    try {
+                        const response = await fetch('http://localhost:5000/api/register', {
+                            method: 'POST',
+                            headers: { 
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
+                            body: JSON.stringify({ fullname, email, password, role })
+                        });
+                        
+                        const data = await response.json();
+                        console.log('Server response:', data);
+                        
+                        if (response.ok) {
+                            messageDiv.textContent = 'Registration successful! Redirecting to login...';
+                            messageDiv.className = 'success';
+                            
+                            // Clear form
+                            registerForm.reset();
+                            
+                            // Redirect to login page after delay
+                            setTimeout(() => {
+                                window.location.href = 'User_login.html';
+                            }, 2000);
+                        } else {
+                            messageDiv.textContent = data.message || 'Registration failed.';
+                            messageDiv.className = 'error';
+                        }
+                        
+                    } catch (error) {
+                        console.error('Registration error:', error);
+                        messageDiv.textContent = 'Cannot connect to server. Please check if the server is running.';
+                        messageDiv.className = 'error';
+                    } finally {
+                        // Re-enable submit button
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Register';
+                    }
+                });
             }
-
-            if (response.ok) {
-                messageDiv.style.color = 'green';
-                messageDiv.textContent = 'Registration successful! Redirecting to login...';
-                setTimeout(() => {
-                    window.location.href = 'User_login.html';
-                }, 1500);
-            } else {
-                messageDiv.style.color = 'red';
-                messageDiv.textContent = (data && data.message) ? data.message : 'Registration failed.';
-            }
-        } catch (err) {
-            messageDiv.style.color = 'red';
-            messageDiv.textContent = 'Could not connect to server. Please check if backend is running and CORS is enabled.';
-        }
-    });
+        });
     </script>
 </body>
 </html>
