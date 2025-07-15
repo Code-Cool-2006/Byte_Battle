@@ -6,6 +6,8 @@ body {
 }
 
 .container {
+    flex: 1;
+    padding: 20px;
     width: 100%;
     max-width: 450px;
     margin: 50px auto;
@@ -13,6 +15,25 @@ body {
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+}
+.container1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  height: 100vh;
+  background-color: #fff;
+}
+
+.image-box {
+  flex: 1;
+  padding: 20px;
+}
+
+.image-box img {
+  width: 100%;
+  max-width: 500px;
+  object-fit: contain;
 }
 
 h1 {

@@ -88,8 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         switch(role.toLowerCase()) {
                             case 'superadmin':
                             case 'admin':
-                                console.log('Redirecting to main.html as admin');
-                                window.location.href = 'c:\\Users\\user\\Documents\\FrontEnd Development\\Byte_Battle\\dashboard\\main.html';
+                                console.log('Redirecting to Admin Dashboard as admin');
+                                window.location.href = '../../dashboard/main.html';
                                 break;
                             case 'student':
                                 console.log('Redirecting to student dashboard');
