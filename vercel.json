@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "name": "byte-battle-frontend",
+  "builds": [
+    {
+      "src": "Login_Page/src/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/Login_Page/src/$1"
+    }
+  ]
+}
