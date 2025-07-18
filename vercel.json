@@ -5,9 +5,17 @@
     {
       "src": "Login_Page/src/**/*",
       "use": "@vercel/static"
+    },
+    {
+      "src": "dashboard/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
+    {
+      "src": "/dashboard/(.*)",
+      "dest": "/dashboard/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "/Login_Page/src/$1"
