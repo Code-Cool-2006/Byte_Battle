@@ -164,4 +164,13 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    // Handle guest login button click
+    const guestLoginBtn = document.querySelector('.guest-login-button');
+    if (guestLoginBtn) {
+        guestLoginBtn.addEventListener('click', function() {
+            // Redirect to main.html in dashboard folder
+            window.location.href = '../../dashboard/main.html';
+        });
+    }
 });

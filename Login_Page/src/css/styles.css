@@ -124,6 +124,29 @@ h1 {
     color: var(--bg-dark);
 }
 
+.guest-login-button {
+    margin-top: 0.5rem;
+    padding: 1rem 0.75rem;
+    width: 100%;
+    border-radius: 2rem;
+    background: transparent;
+    color: #3498db;
+    border: 3px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+    border-image-source: linear-gradient(45deg, #6a11cb, #2575fc);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 300ms;
+}
+
+.guest-login-button:hover {
+    background: linear-gradient(45deg, #6a11cb, #2575fc);
+    color: white;
+    border: 3px solid transparent;
+}
+
 .span {
     text-align: center;
     color: var(--bg-dark);
